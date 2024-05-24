@@ -19,6 +19,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
 }
 h1 {
     text-align: center;
@@ -30,6 +31,8 @@ h1 {
     padding: .5rem;
     gap:.5rem;
     align-items: center;
+    width: 700px;
+    box-sizing: border-box;
 }
 .dot-container {
     display: flex;
@@ -43,10 +46,15 @@ h1 {
     height: 3rem;
     width: 3rem;
 }
-#frame {
+.frame {
     background-color: aquamarine;
     box-sizing: border-box;
     border-color: silver;
     height: 512px;
     width: 512px;
+}
+.side-image {
+    opacity: .5;
+    overflow: hidden;
+    
 }
