@@ -39,6 +39,7 @@ function moveFrameRight() {
     }
     frameImage.src = imageArray[framePosition];
     adjustSideFrames();
+    autoChange();
 }
 
 function moveFrameLeft() {
@@ -49,6 +50,7 @@ function moveFrameLeft() {
     }
     frameImage.src = imageArray[framePosition];
     adjustSideFrames();
+    autoChange();
 }
 
 const leftArrow = document.querySelector("#left");
@@ -91,3 +93,14 @@ function adjustDots() {
 
     }
 }
+let carouselTimer;
+function autoChange() {
+
+    clearTimeout(carouselTimer);
+    carouselTimer = setTimeout(() => {
+        moveFrameRight();
+        adjustDots();
+    }, "3000");
+}
+
+autoChange();
