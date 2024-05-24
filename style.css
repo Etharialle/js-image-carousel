@@ -14,8 +14,8 @@ body {
 
 main {
     background-color: goldenrod;
-    height: 400px;
-    width: 400px;
+    height: 600px;
+    width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,6 +37,6 @@ h1 {
     background-color: aquamarine;
     box-sizing: border-box;
     border-color: silver;
-    height: 250px;
-    width: 250px
+    height: 512px;
+    width: 512px;
 }
