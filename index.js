@@ -11,6 +11,11 @@ const nextFrame = document.querySelector("#next-frame");
 let lastFrameImage = document.createElement("img");
 let frameImage = document.createElement("img");
 let nextFrameImage = document.createElement("img");
+
+lastFrameImage.className = "frame-image";
+frameImage.className = "frame-image";
+nextFrameImage.className = "frame-image";
+
 lastFrameImage.src = imageArray[imageArray.length - 1];
 frameImage.src = imageArray[0];
 if (imageArray.length === 1) {
@@ -18,6 +23,7 @@ if (imageArray.length === 1) {
 } else {
 nextFrameImage.src = imageArray[1];
 }
+
 lastFrame.appendChild(lastFrameImage);
 frame.appendChild(frameImage);
 nextFrame.appendChild(nextFrameImage);
