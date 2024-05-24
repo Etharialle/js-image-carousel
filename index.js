@@ -38,16 +38,7 @@ function moveFrameRight() {
         framePosition++;
     }
     frameImage.src = imageArray[framePosition];
-    if (framePosition === 0) {
-        lastFrameImage.src = imageArray[imageArray.length -1];
-        nextFrameImage.src = imageArray[framePosition + 1];
-    } else if (framePosition === (imageArray.length - 1)) {
-        lastFrameImage.src = imageArray[framePosition - 1];
-        nextFrameImage.src = imageArray[0]
-    } else {
-        lastFrameImage.src = imageArray[framePosition - 1];
-        nextFrameImage.src = imageArray[framePosition + 1];
-    }
+    adjustSideFrames();
 }
 
 function moveFrameLeft() {
@@ -57,6 +48,16 @@ function moveFrameLeft() {
         framePosition--;            
     }
     frameImage.src = imageArray[framePosition];
+    adjustSideFrames();
+}
+
+const leftArrow = document.querySelector("#left");
+leftArrow.addEventListener("click", () => {
+    moveFrameLeft();
+    adjustDots();
+})
+
+function adjustSideFrames() {
     if (framePosition === 0) {
         lastFrameImage.src = imageArray[imageArray.length -1];
         nextFrameImage.src = imageArray[framePosition + 1];
@@ -68,13 +69,6 @@ function moveFrameLeft() {
         nextFrameImage.src = imageArray[framePosition + 1];
     }
 }
-
-const leftArrow = document.querySelector("#left");
-leftArrow.addEventListener("click", () => {
-    moveFrameLeft();
-    adjustDots();
-})
-
 function adjustDots() {
     const dotContainer = document.querySelector(".dot-container");
     dotContainer.replaceChildren();
@@ -84,9 +78,16 @@ function adjustDots() {
             dot.src = "./assets/circle.svg";
         } else {
             dot.src = "./assets/circle-outline.svg";
+            dot.addEventListener("click", () => {
+                framePosition = imageArray.indexOf(x);
+                frameImage.src = imageArray[framePosition];
+                adjustSideFrames();
+                adjustDots();
+            });
         }
         dot.className = "dots";
         dotContainer.appendChild(dot);
         console.log(imageArray.indexOf(x));
+
     }
 }
